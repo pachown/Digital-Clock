@@ -18,7 +18,18 @@ function updatedClock() {
     document.getElementById('clock').innerHTML = today.toString();
 }
 
-////This bitch is finally updating itself! working!
+////This is finally updating itself! working!
 
 //To-Do - CSS styling, 
 //      - putting month, day, year, hour, minute, second each in their own place
+
+//button for military time vs AM PM
+
+//This listens for the button click and then activates the function buttonClick
+var button = document.getElementById('button').addEventListener('click', buttonClick);
+
+//this function is activated when the button is pressed. Right now it just logs something worthless in the console for testing purposes
+//function buttonClick(){
+//    console.log('Button clicked');
+//}
+

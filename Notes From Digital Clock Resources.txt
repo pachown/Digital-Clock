@@ -140,3 +140,161 @@ https://www.youtube.com/watch?v=0ik6X4DJKCc
 
 Manipulating the DOM document object model with vanilla JS
 
+
+
+https://www.youtube.com/watch?v=mPd2aJXCZ2g
+
+Traversing the DOM
+
+Parent, sibling, children
+
+var itemList = document.querySelector('#items);
+// parentNode
+console.log(itemList.parentNode); //targets parent of #items
+itemList.parentNode.style.backgroundColor = '#f4f4f4'; //changes parent element to grey
+console.log(itemList.parentNode.parentNode);
+
+parentElement works in a similar way to parentNode
+
+childNodes
+console.log(itemList.childNodes);
+//this will grab the line breaks as well as the child elements
+
+children
+console.log(itemList.children);
+//this will only grab the elements
+
+console.log(itemList.children[1]);
+//targets the second child element
+itemList.children[1].style.backgroundColor = 'yellow';
+//changes the second child element background to yellow
+
+console.log(itemList.firstChild);
+//this will target line breaks & white space just like the childNode targetting method.
+console.log(itemList.firstElementChild);
+//This targets the first element
+itemList.firstElementChild.textContent = 'Hello 1';
+//This targets the first child element of the itemList parent and changes the text to Hello 1
+
+More similar methods - lastChild & lastChildElement
+
+//nextSibling
+console.log(itemList.nextSibling);
+//This grabs white space as well
+console.log(itemList.nextElementSibling);
+//This grabs just the next sibling and won't work if there isn't a next sibling
+console.log(itemList.previousSibling);
+//again, whitespace
+console.log(itemList.previousElementSibling);
+//targets previous sibling
+
+//createElement
+
+// Create a div
+var newDiv = document.createElement('div');
+
+// Add class
+newDiv.className = 'hello';
+
+// Add ID
+newDiv.id = 'hello1';
+
+// Add attr
+newDiv.setAttribute('title', 'Hello Div');
+
+// Create text Node
+var newDivText = document.createTextNode('Hello World');
+
+// Add text to div
+newDiv.appendChild(newDivText);
+
+//adding newDiv to DOM
+var container = document.querySelector('header .container');
+var h1 = document.querySelector(header h1);
+
+container.insertBefore(newDiv, h1);
+
+newDiv.style.fontSize = '30px';
+
+console.log(newDiv);
+
+
+// Event Listener https://www.youtube.com/watch?v=wK2cBMcDTss 
+
+//This listens for the button click and then activates the function buttonClick
+var button = document.getElementById('button').addEventListener('click', buttonClick);
+
+//this function is activated when the button is pressed. Right now it just logs something worthless in the console for testing purposes
+//function buttonClick(){
+//    console.log('Button clicked');
+//}
+
+function buttonClick(e){
+    //position of mouse on x axis
+    //console.log(e.clientX);
+    //position of mouse on y axis
+    //console.log(e.clientY);
+    //position of mouse from element on X axis
+    //console.log(e.offsetX);
+    //position of mouse from element on Y axis
+    //console.log(e.offsetY);
+    //says if another key is being held down during the click event
+    //console.log(e.altKey)
+
+}
+
+//position of mouse
+
+console.log(e.clientX);
+
+//says the event type in the console
+var button = document.getElementByID('button').addEventListener('click', runEvent);
+//double click version of the same
+var button = document.getElementByID('button').addEventListener('dblclick', runEvent);
+//runs the second the mouse clicks down
+var button = document.getElementByID('button').addEventListener('mousedown', runEvent);
+//runs when the mouse click is released
+var button = document.getElementByID('button').addEventListener('mouseup', runEvent);
+
+function runEvent(e){
+    console.log(Event Type: `+e.type);
+}
+
+
+
+// This set of commands will allow you to mess with a div box with id=box
+
+var box = document.getElementByID('box');
+
+//This will fire off the event the second the mouse enters the area of the box
+box.addEventListener('mouseenter', runEvent);
+//This fires off when the mouse leaves the box
+box.addEventListener('mouseleave', runEvent);
+//fires off when the mouse enters the box and any child element
+box.addEventListener('mouseover', runEvent);
+//fires off when the mouse exits the box or any child elements within the box
+
+box.addEventListener('mousemove', runEvent);
+
+//shows the mouse coordinates on the page in real time.
+function runEvent(e) {
+    console.log('EVENT TYPE: '+e.type);
+    output.innerHTML = '<h3>MouseX: '+e.offsetX+' </h3><h3>MouseY: ''+e.offsetY+'</h3>';
+}
+
+function runEvent(e) {
+document.body.style.backgroundColor = 'rgb('+e.offsetX+','+e.offsetY+', 40)';
+}
+body.addEventListener('mousemove', runEvent)
+
+
+
+//Should change the background color based on where the mouse is in the browser but didn't work in testing
+
+var colorChange = document.getElementById('body');
+
+colorChange.addEventListener('mousemove', runEvent);
+
+function runEvent(e){
+    document.body.style.backgroundColor = "rgb("+e.clientX+","+e.clientY+", 40)";
+    }

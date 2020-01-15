@@ -1,0 +1,25 @@
+head {
+    font-size: 20px;
+    font-family: courier;
+    background-color: silver;
+    font-weight: bold;
+    color: rgb(56, 7, 7);
+    text-align: center;
+}
+body {
+    
+    font-size: 20px;
+    font-family: courier;
+    background-color: rgb(192, 192, 192);
+    font-weight: bold;
+    color:rgb(56,7,7);
+    background-repeat: no-repeat;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    text-align: center;
+}

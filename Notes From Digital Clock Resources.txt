@@ -1,0 +1,142 @@
+Digital Clock App Notes
+
+
+From: https://alligator.io/js/settimeout-setinterval/
+in browser environments & Node.js, two methods on the global object that make it easy to schedule tasts are:
+setTimeout: calls a function once after a speccified delay.
+
+setTimeout expects 2 arguments, a reference to a callbac k function and a delay in milliseconds.
+Ex.1 - This will print a message to the console after 1 second. Uses inline function expression.
+setTimeout(() => {
+    console.log('Alligator!);
+}, 1000);
+
+Ex.2 - This function is the same as ex.1 but it uses a reference to the function to accomplish the same goal.
+function gator() {
+    console.log('alligator!);
+}
+setTimeout(gator, 1000);
+
+setInterval: Calls a function continuously at a specified delay between each call.
+
+Cancelling a timer 
+clearTimeout methoid is used to calcel a timeout.
+
+Ex. 1 - function animal(animalName, extreas = '!!!') {
+    const name = animalName.charAt (0).toUpperCase() + animalName.slice(1);
+    console.log(`${name}${extras}`);
+}
+
+const animalTimer = setTimeout(animal, 800, 'wolf', '$#@%');
+
+setTimeout(() => {
+    clearTimeout(animalTimer);
+}, 250);
+
+Executing with 0ms delay:
+
+A popular technique to improve the performance of JS code is to set timers with setTimeout calls that have a delay of 0ms. 
+This adds a timer to the message queue for code to run ASAP, as soon as the current synchronous code and previous message in the queue have finished executing, making the code executed wit hthe setTimeout asychronous:
+
+setTimeout(() => {
+    console.log('Panda');
+},0);
+console.log(Koala');
+
+Using setTmieout in this way causes the task at hand to run after instantanious tasks like console.log with no timeout. 
+
+When using a value of 0 as a delay, the second argument of setTimeout can be omitted and 0 is just implied. 
+
+
+
+setInterval:
+
+The API for setInterval is pretty much the same as with setTimeout. 
+
+1. It expects 23 arguments: a callback function and a delay in milliseconds
+2. It returns a timer ID, and clearInterveal can be called with the timer ID to cancel the timer
+3. additional arguments can be passed-in, and they will then be passed-in as arguments to the cvallback function
+4. THE MAIN DIFFERENCE between setTimeout & setInterval is that setInterval calls the callback function repeatedly with the specified delay in-between the calls.
+
+Ex.1 - In the following example, we increment a value and print it to the console every second:
+let i = 0;
+
+function increment() {
+    i++;
+    console.log(i);
+}
+
+setInterval(increment, 1000);
+
+Recursive setTimeout Calls - Sometimes it can make more sense to use a recursive setTimeout timer instead of a setInterval timer. For one, if the tasks performed as part of the timr take a long time, using setInterval can meani that the tasks end up having no delay inbetween because the delay is calculated from the start of the task.
+If using a recurring setTimeout timer instead, we have full constrol on when the delay starts. 
+
+Ex.2 - An example of a recursive setTimeout call:
+
+let i=0;
+
+function increment() {
+    i++;
+    console.log(i);
+}
+
+let timer = setTimeout(function myTimer() {
+    increment();
+    timer = setTimeout(myTimer, 1000);
+}, 1000);
+
+//let's cancel it after 7 seconds
+
+setTimeout(()=> {
+    console.log('Cancelling');
+    clearTimeout(timer);
+}, 7000);
+
+
+
+
+
+
+from Google search "How to get the current date in JS" & https://tecadmin.net/get-current-date-time-javascript/
+
+-Use Date() function to create an object in JS with the current date & time. This provides output in UTC timezone
+Ex.1 - var today = new Date();
+
+Current date in JS 
+
+Ex.1 - Use the following script to get the current date using JS in y-m-d format:
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+getFullYear() - provides current year
+getMonth() - provides current month values 0-11. 0=Jan & 11=Dec
+getDate() - provides day of the month values 1-31
+
+Current Time in JS
+
+Ex.1 - The following script get the current time using js in H:i:s format
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+getHours() -= provides current hour between 0-23
+getMinutes() - provides current minutes between 0-59
+getSeconds() - Provides current seconds betewen 0-59
+
+Current Date & Time Both IN JS
+
+Ex.1 - Use the folling script to get the current date & time using JSJ in Y-m-d H:i:s format. You can simply combine the output of the above JS code in one variable like so:
+
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
+
+the dateTime variable contains result as: 2018-8-3 11:12:40
+
+
+
+
+https://www.youtube.com/watch?v=0ik6X4DJKCc
+
+Manipulating the DOM document object model with vanilla JS
+

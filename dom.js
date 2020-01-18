@@ -1,23 +1,18 @@
 //Digital clock app JavaScript
 
-//var updateClock = setInterval(updatedClock, 1000);
+//Update functions every second
 var updateYear = setInterval(updatedYear, 1000);
 var updateMonth = setInterval(updatedMonth, 1000);
 var updateDay = setInterval(updatedDay, 1000);
 var updateHoursMinutesSeconds = setInterval(updatedHoursMinutesSeconds, 1000);
 
-//This function works but doesn't give specific information to specific IDs, so it is scrapped for now
-// function updatedClock() {
-//     var today = new Date();
-//     document.getElementById('clock').innerHTML = today.toString();
-// }
-
+//Update Year
 function updatedYear() {
     var today = new Date();
     var year = today.getFullYear();
     document.getElementById('year').innerHTML = year.toString();
 }
-
+//Update month & transform from number to month string
 function updatedMonth() {
     var today = new Date();
     var monthNumber = today.getMonth();
@@ -60,47 +55,66 @@ function updatedMonth() {
             month='December'
             break;
     }
-    month=month
     document.getElementById('month').innerHTML = month.toString();
 }
-
+//Update day of month
 function updatedDay() {
     var today = new Date();
     var day = today.getDate();
     document.getElementById('date').innerHTML = day.toString();
 }
 
-function updatedHours() {
-    var today = new Date();
-    var hours = today.getHours();
-    if (hour <= 12) {
-        hours = hours+'AM'
-    } else {
-        hours = hours-12+'PM'
-    }
+//time function with exceptions for AM/PM at specific times of day
 
-    document.getElementById('hour').innerHTML = hours.toString();
-}
-
-function updatedHoursMinutesSeconds () {
+function updatedHoursMinutesSeconds() {
     var today = new Date();
     var hours = today.getHours();
     var minutes = today.getMinutes();
     var seconds = today.getSeconds();
-        if (hours <= 12) {
-            seconds = seconds+'AM';
-        } else {
-            (seconds = seconds+'PM') && (hours = hours-12)
-        }
-    var hoursMinutesSeconds = hours +':'+ minutes+':'+ seconds;
+    var hoursMinutesSeconds
+            if(hours <= 11) {
+                earlySeconds = seconds+'AM';
+                hoursMinutesSeconds = hours +':'+ minutes+':'+ earlySeconds;
+            } else if (hours === 12){
+                noonSeconds = seconds+'PM';
+                hoursMinutesSeconds = hours +':'+ minutes+':'+ noonSeconds;
+            } else if (hours === 24) {
+                (midnightSeconds = seconds+'AM') && (midnightHours = hours-12);
+                hoursMinutesSeconds = midnightHours +':'+minutes+':'+ midnightSeconds;
+            } else {
+                (lateSeconds = seconds+'PM') && (lateHours = hours-12);
+                hoursMinutesSeconds = lateHours +':'+ minutes+':'+ lateSeconds;
+            }
     document.getElementById('time').innerHTML = hoursMinutesSeconds.toString();
+    clearInterval(updatedMilitaryTime);
 }
 
+// var buttonMilitary = document.getElementById('btn').addEventListener('click', updatedMilitaryTime);
 
-//      - get button for military time vs AM PM time to work
-
-//This listens for the button click and then activates the function buttonClick
-var button = document.getElementById('button').addEventListener('click', buttonClick);
-
-//this function is activated when the button is pressed. Right now it just logs something worthless in the console for testing purposes
-
+// function updatedHoursMinutesSeconds(cancel) {
+//     var today = new Date();
+//     var hours = today.getHours();
+//     var minutes = today.getMinutes();
+//     var seconds = today.getSeconds();
+//     var amPM
+//     var hoursMinutesSeconds
+//         if (cancel===0) {
+//             amPM = setInterval() {
+//         //Still trying to get if statements to work with the button.
+//             if(hours <= 11) {
+//                 earlySeconds = seconds+'AM';
+//                 hoursMinutesSeconds = hours +':'+ minutes+':'+ earlySeconds;
+//             } else if (hours === 12){
+//                 noonSeconds = seconds+'PM';
+//                 hoursMinutesSeconds = hours +':'+ minutes+':'+ noonSeconds;
+//             } else if (hours === 24) {
+//                 (midnightSeconds = seconds+'AM') && (midnightHours = hours-12);
+//                 hoursMinutesSeconds = midnightHours +':'+minutes+':'+ midnightSeconds;
+//             } else {
+//                 (lateSeconds = seconds+'PM') && (lateHours = hours-12);
+//                 hoursMinutesSeconds = lateHours +':'+ minutes+':'+ lateSeconds;
+//             }}}
+//         if (cancel===1)
+            
+//     document.getElementById('time').innerHTML = hoursMinutesSeconds.toString();
+// }

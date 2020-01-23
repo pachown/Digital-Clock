@@ -1,22 +1,18 @@
-head {
-    font-size: 20px;
-    font-family: courier;
-    font-weight: bold;
-    color: rgb(56, 7, 7);
-    text-align: center;
-}
 body {
     
-    font-size: 25px;
-    font-family: courier;
-    font-weight: bold;
-    color:rgb(56,7,7);
-    background-color: pearl;
+    font-size: 80px;
+    font-family: 'Unica One', cursive;
+    color: rgb(138, 19, 19);
+    background-image: url("https://www.tokkoro.com/picsup/3103767-close-up_time_timepiece_watch_wristwatch.jpg");
     background-repeat: no-repeat;
-    width: 500px;
-    height: 500px;
+    width: 800px;
+    height: 300px;
     margin: auto;
     padding: 0;
+    border: 10px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 h1,h2,h3,h4,h5,h6,p,button {
@@ -24,7 +20,7 @@ h1,h2,h3,h4,h5,h6,p,button {
 }
 
 div {
+    border: 10px;
     flex-wrap: wrap;
     display: flex;
-    margin: 10px;
 }

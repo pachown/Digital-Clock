@@ -10,7 +10,7 @@ Watch it [here](https://pachown.github.io/)
 
 <br>
 
-<image src="https://github.com/pachown/Thomas-McNutt-Website/blob/main/website/public/WebsiteView.png">
+<image src="https://github.com/pachown/Digital-Clock/blob/master/Digital%2520Clock%2520img%5B1%5D.png">
 
 ## Summary
 
